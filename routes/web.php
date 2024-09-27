@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 // Routes For The Back-End (Admin Panel)
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('backend.index');
@@ -21,18 +21,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-
-// Routes For The Front-End
-    Route::get('/home', function () {
-      return view('frontend.home');
-    });
-    Route::get('/index', function () {
-    return view('frontend.index');
-    });
-    Route::get('/about-us', function () {
-    return view('frontend.about-us');
-    });
-    Route::get('/contact-us', function () {
-    return view('frontend.contact-us');
-    });
+// Routes For The Front-End (The WebSite)
+Route::prefix('/')->group(function () {
+    Route::get('/', [HomeController::class,'index'])->name('frontend.index');
+    Route::get('/about-us', [AboutController::class,'index'])->name('frontend.about-us');
+    Route::get('/contact-us', [ContactController::class,'index'])->name('frontend.index');
+});
