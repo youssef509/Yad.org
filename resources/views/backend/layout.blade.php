@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
 
     <head>
 
         <meta charset="utf-8" />
-        <title>Dashboard | Dason - Admin & Dashboard Template</title>
+        <title>
+            @yield('title')
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -15,7 +17,7 @@
         <link href="{{ asset('backend-assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />
 
         <!-- preloader css -->
-        <link rel="stylesheet" href="{{ asset('backend-assets/css/preloader.min.css" type="text/css')}}" />
+        <link rel="stylesheet" href="{{ asset('backend-assets/css/preloader-rtl.min.css" type="text/css')}}" />
 
         <!-- Bootstrap Css -->
         <link href="{{ asset('backend-assets/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -24,6 +26,8 @@
         <!-- App Css-->
         <link href="{{ asset('backend-assets/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+        @yield('css')
+
     </head>
 
     <body data-topbar="dark">
@@ -31,7 +35,7 @@
     <!-- <body data-layout="horizontal"> -->
 
         <!-- Begin page -->
-        <div id="layout-wrapper">
+        <div id="layout-wrapper-rtl">
 
             
             <header id="page-topbar">
@@ -44,7 +48,7 @@
                                     <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Dason</span>
+                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">PLATINUM</span>
                                 </span>
                             </a>
 
@@ -53,7 +57,7 @@
                                     <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Dason</span>
+                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">PLATINUM</span>
                                 </span>
                             </a>
                         </div>
@@ -396,11 +400,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © Dason.
+                            <script>document.write(new Date().getFullYear())</script> © PLATINUM.
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                                Design & Develop by <a href="https://youssefahmed.com/"  target="_blank" class="text-decoration-underline">YOUSSEF AHMED</a>
                             </div>
                         </div>
                     </div>
@@ -440,6 +444,8 @@
     <script src="{{ asset('backend-assets/js/pages/dashboard.init.js')}}"></script>
 
     <script src="{{ asset('backend-assets/js/app.js')}}"></script>
+
+    @yield('js')
 
 </body>
 
