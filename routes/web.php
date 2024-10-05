@@ -15,6 +15,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('backend.index');
     Route::get('/test', [AdminController::class, 'test'])->name('backend.test');
     Route::get('/slider', [SliderController::class, 'index'])->name('backend.slider');
+    Route::prefix('slider')->group(function() {
+        Route::get('/', [SliderController::class, 'index'])->name('backend.slider');
+        Route::post('/', [SliderController::class, 'store'])->name(name: 'admin.slider-store');
+    });
 });
 
 Route::middleware('auth')->group(function () {

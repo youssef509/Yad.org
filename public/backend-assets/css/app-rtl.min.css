@@ -7,6 +7,7 @@ Contact: themesbrand@gmail.com
 File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
 [data-theme-mode=red] {
   --bs-primary: #ff7784 !important;
   --bs-primary-rgb: 255, 119, 132 !important;
@@ -120,6 +121,10 @@ File: Main Css File
   top: 3px;
   height: 34px;
   padding: 0 10px;
+}
+
+body {
+  font-family: "Noto Kufi Arabic", system-ui;
 }
 
 body:not([data-sidebar-size=sm]) #vertical-menu-btn {
@@ -2146,9 +2151,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .container-fluid, body[data
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23ced4da'/%3e%3c/svg%3e");
 }
 
-[dir=rtl] input {
-  text-align: end;
-}
+
 
 .widget-box-1-icon {
   position: absolute;
