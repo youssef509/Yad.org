@@ -7,19 +7,21 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CausesController;
 use App\Http\Controllers\CauseDetailsController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\HomeAboutController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('backend.index');
-    Route::get('/test', [AdminController::class, 'test'])->name('backend.test');
-    Route::get('/slider', [SliderController::class, 'index'])->name('backend.slider');
     Route::prefix('slider')->group(function() {
         Route::get('/', [SliderController::class, 'index'])->name('backend.slider');
         Route::post('/', [SliderController::class, 'store'])->name(name: 'admin.slider-store');
         Route::get('{slider}/edit', [SliderController::class, 'edit'])->name(name: 'admin.edit-slider');
         Route::put('{slider}/update', [SliderController::class, 'update'])->name(name: 'admin.slider-update');
         Route::delete('{slider}', [SliderController::class, 'destroy'])->name(name: 'admin.slider-destroy');
+    });
+    Route::prefix('homeabout')->group(function() {
+        Route::get('/',[HomeAboutController::class, 'index'])->name('backend.homeabout');
     });
 });
 
