@@ -22,78 +22,31 @@
         "delay": 5000
         }}'>
                 <div class="swiper-wrapper">
-
+                    @foreach ($sliders as $slider)
                     <div class="swiper-slide">
                         <div class="image-layer"
-                            style="background-image: url({{ asset('frontend-assets/images/backgrounds/main-slider-1-1.jpg);')}}"></div>
+                            style="background-image: url({{ $slider->image_url }})"></div>
                         <!-- /.image-layer -->
-
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="main-slider__content">
-                                        <h2 class="main-slider__title">اهلا <span>&</span> <br>
-                                            Give Charity.</h2>
-                                        <p class="main-slider__text">We are here to support you every step of the way
-                                        </p>
+                                        <h2 class="main-slider__title">{{$slider->text_1}}</h2>
+                                        <p class="main-slider__text">{{$slider->text_2}}</p>
                                         <div class="main-slider__btn-box">
-                                            <a href="about.html" class="thm-btn main-slider__btn-one">Discover More</a>
-                                            <a href="cause-details.html" class="thm-btn main-slider__btn-two">تبرع الان</a>
+                                            @if(!empty($slider->button1_text) && !empty($slider->button1_url))
+                                                <a href="{{ $slider->button1_url }}" class="thm-btn main-slider__btn-one">{{ $slider->button1_text }}</a>
+                                            @endif
+                                            @if(!empty($slider->button2_text) && !empty($slider->button2_url))
+                                                <a href="{{ $slider->button2_url }}" class="thm-btn main-slider__btn-two">{{ $slider->button2_text }}</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="swiper-slide">
-                        <div class="image-layer"
-                            style="background-image: url({{ asset('frontend-assets/images/backgrounds/main-slider-1-2.jpg);')}}"></div>
-                        <!-- /.image-layer -->
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="main-slider__content">
-                                        <h2 class="main-slider__title">Think <span>&</span> <br>
-                                            Give Charity.</h2>
-                                        <p class="main-slider__text">We are here to support you every step of the way
-                                        </p>
-                                        <div class="main-slider__btn-box">
-                                            <a href="about.html" class="thm-btn main-slider__btn-one">Discover More</a>
-                                            <a href="cause-details.html" class="thm-btn main-slider__btn-two">Donate
-                                                now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="image-layer"
-                            style="background-image: url({{ asset('frontend-assets/images/backgrounds/main-slider-1-3.jpg);')}}"></div>
-                        <!-- /.image-layer -->
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="main-slider__content">
-                                        <h2 class="main-slider__title">Think <span>&</span> <br>
-                                            Give Charity.</h2>
-                                        <p class="main-slider__text">We are here to support you every step of the way
-                                        </p>
-                                        <div class="main-slider__btn-box">
-                                            <a href="about.html" class="thm-btn main-slider__btn-one">Discover More</a>
-                                            <a href="cause-details.html" class="thm-btn main-slider__btn-two">Donate
-                                                now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
 
 

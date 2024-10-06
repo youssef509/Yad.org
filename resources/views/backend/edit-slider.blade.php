@@ -1,7 +1,7 @@
 @extends('backend.layout')
 
 @section('title')
-    Slider
+    Edit Slider
 @endsection
 
 @section('css')
@@ -22,8 +22,8 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">الاسليدر</h4>
-                                        <p class="card-title-desc">اضافة اسليدر</p>
+                                        <h4 class="card-title">قائمة الاسليدر</h4>
+                                        <p class="card-title-desc">تعديل محتويات الاسليدر النصوص,زر,الصورة </p>
                                     </div>
                                     <div class="card-body p-4">
                                         @if ($errors->any())
@@ -35,22 +35,23 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form method="POST" action="{{route('admin.slider-store')}}"  enctype="multipart/form-data"> 
+                                        <form method="POST" action="{{route('admin.slider-update', $slider->id)}}"  enctype="multipart/form-data"> 
                                             @csrf
+                                            @method('PUT')
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">النص الاول</label>
-                                                            <input name="text_1" class="form-control" type="text">
+                                                            <input name="text_1" value="{{$slider->text_1}}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">نص الزر الاول</label>
-                                                            <input name="button1_text" class="form-control" type="text">
+                                                            <input name="button1_text" value="{{$slider->button1_text}}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">نص الزر الثاني</label>
-                                                            <input name="button2_text" class="form-control" type="text">
+                                                            <input name="button2_text" value="{{$slider->button2_text}}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">الصورة</label>
@@ -61,19 +62,27 @@
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">النص الثاني</label>
-                                                            <input  name="text_2" class="form-control" type="text">
+                                                            <input  name="text_2" value="{{$slider->text_2}}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">رابط الزر الاول</label>
-                                                            <input name="button1_url" class="form-control" type="text">
+                                                            <input name="button1_url" value="{{$slider->button1_url}}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">رابط الزر الثاني</label>
-                                                            <input name="button2_url" class="form-control" type="text">
+                                                            <input name="button2_url" value="{{$slider->button2_url}}" class="form-control" type="text">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="card">
+                                                                
+                                                                <div class="card-body">
+                                                                    <img class="card-img-top img-fluid" src="{{$slider->image_url}}" alt="Card image cap">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-body text-center">
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">اضافة</button>
+                                                        <button type="submit" class="btn btn-success waves-effect waves-light">تحديث</button>
                                                     </div>
                                             </div>
                                         </form>
@@ -82,52 +91,7 @@
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">قائمة الاسليدر</h4>
-                                        <p class="card-title-desc">تعديل محتويات الاسليدر النصوص,زر,الصورة </p>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <div class="container text-center">
-                                            <div class="row">
-                                                @foreach ($sliders as $slider)
-                                                <div class="col">
-                                                    <!-- Simple card -->
-                                                    <div class="card">
-                                                        <img class="card-img-top img-fluid" src="{{ $slider->image_url }}" alt="Card image cap">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">{{$slider->text_1}}</h4>
-                                                            <p class="card-text">{{$slider->text_2}}</p>
-                                                            <a href="{{route('admin.edit-slider', $slider->id)}}" class="btn btn-success waves-effect waves-light">تعديل</a>
-                                                            <form method="POST" action="{{route('admin.slider-destroy', $slider->id)}}" class="delete-form" style="display: inline">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger waves-effect waves-light sa-warning">حذف</button>
-                                                            </form>
-                                                        </div>
-                                                        @if(session('success'))
-                                                            <script>
-                                                                document.addEventListener("DOMContentLoaded", function() {
-                                                                    Swal.fire({
-                                                                        title: "نجاح!",
-                                                                        text: "{{ session('success') }}",
-                                                                        icon: "success",
-                                                                        confirmButtonText: "حسناً"
-                                                                    });
-                                                                });
-                                                            </script>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->

@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
@@ -10,7 +9,7 @@ use App\Http\Controllers\CauseDetailsController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
-// Routes For The Back-End (Admin Panel)
+// Routes For The Back-End (Admin Panel).
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('backend.index');
     Route::get('/test', [AdminController::class, 'test'])->name('backend.test');
@@ -18,6 +17,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('slider')->group(function() {
         Route::get('/', [SliderController::class, 'index'])->name('backend.slider');
         Route::post('/', [SliderController::class, 'store'])->name(name: 'admin.slider-store');
+        Route::get('{slider}/edit', [SliderController::class, 'edit'])->name(name: 'admin.edit-slider');
+        Route::put('{slider}/update', [SliderController::class, 'update'])->name(name: 'admin.slider-update');
+        Route::delete('{slider}', [SliderController::class, 'destroy'])->name(name: 'admin.slider-destroy');
     });
 });
 
@@ -29,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Routes For The Front-End (The WebSite)
+// Routes For The Front-End (The WebSite).
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class,'index'])->name('frontend.index');
     Route::get('/about-us', [AboutController::class,'index'])->name('frontend.about-us');
