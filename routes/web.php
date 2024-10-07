@@ -22,6 +22,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     });
     Route::prefix('homeabout')->group(function() {
         Route::get('/',[HomeAboutController::class, 'index'])->name('backend.homeabout');
+        Route::post('/',[HomeAboutController::class, 'store'])->name('admin.homeabout-store');
     });
 });
 

@@ -130,7 +130,7 @@
             </div>
         </section>
         <!--Feature One End-->
-
+        @foreach ($HomeAboutall as $HomeAbout)
         <!--About One Start-->
         <section class="about-one">
             <div class="about-one__shape-2 float-bob-y">
@@ -143,35 +143,36 @@
                             <div class="about-one__img-box wow slideInLeft" data-wow-delay="100ms"
                                 data-wow-duration="2500ms">
                                 <div class="about-one__img">
-                                    <img src="{{ asset('frontend-assets/images/resources/about-one-img-1.jpg')}}" alt="">
+                                    <img src="{{ asset('uploads/homeabout/' . $HomeAbout->image1) }}" alt="">
                                 </div>
+                                @if(!empty($HomeAbout->image2))
                                 <div class="about-one__img-2">
-                                    <img src="{{ asset('frontend-assets/images/resources/about-one-img-2.jpg')}}" alt="">
+                                    <img src="{{ asset('uploads/homeabout/' . $HomeAbout->image2) }}" alt="">
                                 </div>
+                                @endif
                                 <div class="about-one__shape-1 float-bob-x"></div>
+                                @if(!empty($HomeAbout->video_url))
                                 <div class="about-one__video-link">
-                                    <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                    <a href="{{$HomeAbout->video_url}}" class="video-popup">
                                         <div class="about-one__video-icon">
                                             <span class="fa fa-play"></span>
                                             <i class="ripple"></i>
                                         </div>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="about-one__right">
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">Welcome to Charity Platform</span>
-                                <h2 class="section-title__title">We’re Non-profit
-                                    <br> Charity Organization</h2>
+                                <span class="section-title__tagline">{{$HomeAbout->title1}}</span>
+                                <h2 class="section-title__title">{{$HomeAbout->title2}}</h2>
                             </div>
-                            <p class="about-one__text">Lorem ipsum is simply free text available dolor sit amet,
-                                consectetur notted adipisicing elit sed do eiusmod tempor incididunt simply.</p>
+                            <p class="about-one__text">{{$HomeAbout->text1}}.</p>
                             <div class="about-one__text-box">
-                                <p class="about-one__text-2"><span>Lorem ipsum dolor</span> sit amet consectetur
-                                    convallis ultrices sociis fermentum orci convallis ultrices sociis</p>
+                                <p class="about-one__text-2">{{$HomeAbout->text2}}</p>
                             </div>
                             <ul class="about-one__points list-unstyled">
                                 <li>
@@ -183,8 +184,7 @@
                                             <p>Our Mission</p>
                                         </div>
                                     </div>
-                                    <p class="about-one__points-text-2">Lorem ipsum dolor sited text amet consectetur
-                                        notted.</p>
+                                    <p class="about-one__points-text-2"></p>
                                 </li>
                                 <li>
                                     <div class="about-one__points-icon-box">
@@ -208,7 +208,7 @@
             </div>
         </section>
         <!--About One End-->
-
+        @endforeach
         <!--Counter One Start-->
         <section class="counter-one">
             <div class="counter-one__bg"

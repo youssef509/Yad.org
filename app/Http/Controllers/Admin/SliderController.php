@@ -46,7 +46,7 @@ class SliderController extends Controller
 
     // Redirect to the slider list or any other route
     return to_route('backend.slider');
-}
+    }
 
     public function edit($sliderId) {
         $SliderFromDB = Slider::where('id', $sliderId)->first();
