@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\CausesController;
 use App\Http\Controllers\CauseDetailsController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\HomeAboutController;
+use App\Http\Controllers\Admin\PartinersController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
@@ -22,7 +24,12 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     });
     Route::prefix('homeabout')->group(function() {
         Route::get('/',[HomeAboutController::class, 'index'])->name('backend.homeabout');
-        Route::post('/',[HomeAboutController::class, 'store'])->name('admin.homeabout-store');
+        Route::post('/',[HomeAboutController::class, 'store'])->name('admin.homeabout-store'); 
+        // Route::get('/', [HomeAboutController::class, 'edit'])->name('admin.homeabout-edit'); // Need To Be Removed
+        Route::put('/{homeAbout}',[HomeAboutController::class, 'update'])->name('admin.homeabout-update');
+    });
+    Route::prefix('partiners')->group(function() {
+        Route::get('/',[PartinersController::class, 'index'])->name('backend.partiners');
     });
 });
 

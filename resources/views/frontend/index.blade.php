@@ -184,7 +184,7 @@
                                             <p>Our Mission</p>
                                         </div>
                                     </div>
-                                    <p class="about-one__points-text-2"></p>
+                                    <p class="about-one__points-text-2">{{$HomeAbout->our_vision}}</p>
                                 </li>
                                 <li>
                                     <div class="about-one__points-icon-box">
@@ -195,12 +195,11 @@
                                             <p>Our Story</p>
                                         </div>
                                     </div>
-                                    <p class="about-one__points-text-2">Lorem ipsum dolor sited text amet consectetur
-                                        notted.</p>
+                                    <p class="about-one__points-text-2">{{$HomeAbout->our_messege}}</p>
                                 </li>
                             </ul>
                             <div class="about-one__btn-box">
-                                <a href="about.html" class="about-one__btn thm-btn">Discover More</a>
+                                <a href="{{$HomeAbout->button_url}}" class="about-one__btn thm-btn">{{$HomeAbout->button_text}}</a>
                             </div>
                         </div>
                     </div>
