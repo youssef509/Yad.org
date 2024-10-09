@@ -30,6 +30,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     });
     Route::prefix('partiners')->group(function() {
         Route::get('/',[PartinersController::class, 'index'])->name('backend.partiners');
+        Route::post('/',[PartinersController::class, 'store'])->name('admin.partiners-create');
+        Route::delete('{partiner}',[PartinersController::class, 'destroy'])->name('admin.partiners-destroy');
     });
 });
 

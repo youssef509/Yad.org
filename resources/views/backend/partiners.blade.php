@@ -36,7 +36,7 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form method="POST" action="" enctype="multipart/form-data">
+                                        <form method="POST" action="{{route('admin.partiners-create')}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-lg-6">
@@ -46,6 +46,17 @@
                                                             <input name="image" class="form-control" type="file" id="formFile">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div>
+                                                        <div class="mb-3">
+                                                            <label for="example-text-input" class="form-label">العنوان(ALT)</label>
+                                                            <input  name="alt" class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">اضافة</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -70,19 +81,19 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">قائمة الاسليدر</h4>
-                                        <p class="card-title-desc">تعديل محتويات الاسليدر النصوص,زر,الصورة </p>
+                                        <h4 class="card-title">قائمة الشركاء</h4>
                                     </div>
                                     <div class="card-body p-4">
                                         <div class="container text-center">
                                             <div class="row">
-                                                @foreach ($sliders as $slider)
-                                                <div class="col">
+                                                @foreach ($partiners as $partiner)
+                                                <div class="col-4">
                                                     <!-- Simple card -->
                                                     <div class="card">
-                                                        <img class="card-img-top img-fluid" src="{{ $slider->image_url }}" alt="Card image cap">
+                                                        <img class="card-img-top img-fluid" src="{{ $partiner->image_url }}" alt="Card image cap">
                                                         <div class="card-body">
-                                                            <form method="POST" action="{{route('admin.slider-destroy', $slider->id)}}" class="delete-form" style="display: inline">
+                                                            <p class="card-text">{{$partiner->alt}}</p>
+                                                            <form method="POST" action="{{route('admin.partiners-destroy', $partiner->id)}}" class="delete-form" style="display: inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-danger waves-effect waves-light sa-warning">حذف</button>
