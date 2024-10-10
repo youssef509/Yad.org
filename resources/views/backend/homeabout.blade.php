@@ -123,7 +123,7 @@
                                             });
                                         });
                                     </script>
-                                @endif
+                                     @endif
                                 </div>
                             </div> <!-- end col -->
                         </div>

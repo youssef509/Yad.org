@@ -45,7 +45,7 @@ class SliderController extends Controller
     ]);
 
     // Redirect to the slider list or any other route
-    return to_route('backend.slider');
+    return to_route('backend.slider')->with('success-create', 'تم اضافة العنصر بنجاح');
     }
 
     public function edit($sliderId) {
@@ -95,7 +95,7 @@ class SliderController extends Controller
             'image' => $imageName
         ]);
 
-        return to_route('backend.slider', $sliderId);
+        return to_route('backend.slider')->with('success-update', 'تم تحديث العنصر بنجاح');
     }
 
     public function destroy($sliderId) {

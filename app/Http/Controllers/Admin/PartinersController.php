@@ -38,23 +38,22 @@ class PartinersController extends Controller
         return to_route('backend.partiners')->with('success-create', 'تم اضافة العنصر بنجاح');
         }
 
-        public function destroy($partinerId)
-{
-    $partiner = partiners::find($partinerId);
-    
-    if ($partiner) {
-        // Delete the record from the database
-        $partiner->delete();
+        public function destroy($partinerId) {
+        $partiner = partiners::find($partinerId);
         
-        // Remove the image file from the uploads folder
-        if (file_exists(public_path('uploads/partiners/' . $partiner->image))) {
-            unlink(public_path('uploads/partiners/' . $partiner->image));
+        if ($partiner) {
+            // Delete the record from the database
+            $partiner->delete();
+            
+            // Remove the image file from the uploads folder
+            if (file_exists(public_path('uploads/partiners/' . $partiner->image))) {
+                unlink(public_path('uploads/partiners/' . $partiner->image));
+            }
+
+            // Redirect with success message
+            return to_route('backend.partiners')->with('success', 'تم حذف العنصر بنجاح');
         }
 
-        // Redirect with success message
-        return to_route('backend.partiners')->with('success', 'تم حذف العنصر بنجاح');
-    }
-
-    return back()->with('error', 'العنصر غير موجود');
-}
+            return back()->with('error', 'العنصر غير موجود');
+        }
 }

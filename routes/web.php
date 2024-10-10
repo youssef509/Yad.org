@@ -10,6 +10,7 @@ use App\Http\Controllers\CauseDetailsController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\PartinersController;
+use App\Http\Controllers\Admin\GalleryController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
@@ -32,6 +33,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('/',[PartinersController::class, 'index'])->name('backend.partiners');
         Route::post('/',[PartinersController::class, 'store'])->name('admin.partiners-create');
         Route::delete('{partiner}',[PartinersController::class, 'destroy'])->name('admin.partiners-destroy');
+    });
+    Route::prefix('gallery')->group(function() {
+        Route::get('/',[GalleryController::class, 'index'])->name('backend.gallery');
+        Route::post('/',[GalleryController::class, 'store'])->name('admin.gallery-create');
+        Route::delete('{gallery}',[GalleryController::class, 'destroy'])->name('admin.gallery-destroy');
     });
 });
 
