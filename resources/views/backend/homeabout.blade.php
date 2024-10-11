@@ -50,7 +50,7 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">النص الاول (يظهر بعد العنوان الثاني)</label>
-                                                            <input name="text1" value="{{ $homeAbout ? $homeAbout->title1 : old('title1') }}" class="form-control" type="text">
+                                                            <input name="text1" value="{{ $homeAbout ? $homeAbout->text1 : old('title1') }}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">رؤيتنا</label>
