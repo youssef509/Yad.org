@@ -36,9 +36,9 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form method="POST" action="{{ $HeroSection ? route('admin.hero-update', $HeroSection->id) : route('admin.hero-create') }}" enctype="multipart/form-data">
+                                        <form method="POST" action="{{ $theherosection ? route('admin.hero-update', $theherosection->id) : route('admin.hero-create') }}" enctype="multipart/form-data">
                                             @csrf
-                                            @if($HeroSection)
+                                            @if($theherosection)
                                                 @method('PUT')
                                             @endif
                                             <div class="row">
@@ -46,13 +46,13 @@
                                                     <div>
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">النص الاول (يظهر بخط صغير)</label>
-                                                            <input name="title1" value="{{ $HeroSection ? $HeroSection->title1 : old('title1') }}" class="form-control" type="text">
+                                                            <input name="title1" value="{{ $theherosection ? $theherosection->title1 : old('title1') }}" class="form-control" type="text">
                                                         </div>
                                                         
                                                         
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">نص الزر</label>
-                                                            <input name="button_text" value="{{ $HeroSection ? $HeroSection->button_text : old('button_text') }}" class="form-control" type="text">
+                                                            <input name="button_text" value="{{ $theherosection ? $theherosection->button_text : old('button_text') }}" class="form-control" type="text">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">الصورة الاولي</label>
@@ -64,19 +64,19 @@
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">النص الثاني (يظهر بخط اكبر)</label>
-                                                            <input  name="title2" value="{{ $HeroSection ? $HeroSection->title2 : old('title2') }}" class="form-control" type="text">
+                                                            <input  name="title2" value="{{ $theherosection ? $theherosection->title2 : old('title2') }}" class="form-control" type="text">
                                                         </div>
                                                         
                                                         
                                                         <div class="mb-3">
                                                             <label for="example-text-input" class="form-label">رابط الزر</label>
-                                                            <input name="button_url" value="{{ $HeroSection ? $HeroSection->button_url : old('button_url') }}" class="form-control" type="text">
+                                                            <input name="button_url" value="{{ $theherosection ? $theherosection->button_url : old('button_url') }}" class="form-control" type="text">
                                                         </div>
                                                         
                                                     </div>
                                                     <div class="card-body text-center">
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                            {{ $HeroSection ? 'تحديث' : 'إضافة' }}
+                                                            {{ $theherosection ? 'تحديث' : 'إضافة' }}
                                                         </button>
                                                     </div>
                                             </div>
@@ -110,7 +110,7 @@
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
-                        @if ($HeroSection)
+                        @if ($theherosection)
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -124,7 +124,7 @@
                                                 <div class="col">
                                                     <!-- Simple card -->
                                                     <div class="card">
-                                                        <img class="card-img-top img-fluid" src="{{ $HeroSection->image_url }}" alt="Card image cap">
+                                                        <img class="card-img-top img-fluid" src="{{ $theherosection->image_url }}" alt="Card image cap">
                                                         <div class="card-body">
                                                             <h4 class="card-title">الصورة</h4>
                                                         </div>

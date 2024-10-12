@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
@@ -43,7 +42,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('hero')->group(function() {
         Route::get('/',[HeroSectionController::class, 'index'])->name('backend.hero');
         Route::post('/',[HeroSectionController::class, 'store'])->name('admin.hero-create');
-        Route::put('/{herosection}',[HeroSectionController::class, 'update'])->name('admin.hero-update');
+        Route::put('/{theherosection}',[HeroSectionController::class, 'update'])->name('admin.hero-update');
     });
 });
 
