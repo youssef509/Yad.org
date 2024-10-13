@@ -44,6 +44,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::post('/',[HeroSectionController::class, 'store'])->name('admin.hero-create');
         Route::put('/{theherosection}',[HeroSectionController::class, 'update'])->name('admin.hero-update');
     });
+    Route::prefix('about-us')->group(function() {
+        Route::get('/',[HeroSectionController::class, 'index'])->name('backend.hero');
+    });
 });
 
 Route::middleware('auth')->group(function () {
