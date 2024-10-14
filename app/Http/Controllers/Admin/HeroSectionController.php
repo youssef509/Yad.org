@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class HeroSectionController extends Controller
 {
     public function index() {
-        
         $HeroSectionfromDB = HeroSection::first();
         return view('backend.hero-section', ['theherosection' => $HeroSectionfromDB]);
     }

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\PartinersController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\AboutUsController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
@@ -45,7 +46,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::put('/{theherosection}',[HeroSectionController::class, 'update'])->name('admin.hero-update');
     });
     Route::prefix('about-us')->group(function() {
-        Route::get('/',[HeroSectionController::class, 'index'])->name('backend.hero');
+        Route::get('/',[AboutUsController::class, 'index'])->name('backend.aboutus');
     });
 });
 
