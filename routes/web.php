@@ -47,6 +47,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     });
     Route::prefix('about-us')->group(function() {
         Route::get('/',[AboutUsController::class, 'index'])->name('backend.aboutus');
+        Route::post('/',[AboutUsController::class, 'store'])->name('admin.aboutus-create');
+        Route::put('/{singleAboutUsPage}',[AboutUsController::class, 'update'])->name('admin.aboutus-update');
+    });
+    Route::prefix('about-QA')->group(function() {
+        
     });
 });
 

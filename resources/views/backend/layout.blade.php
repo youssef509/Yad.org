@@ -150,7 +150,7 @@
                                     <span data-key="t-email">من نحن</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="apps-email-inbox.html" data-key="t-inbox">Inbox</a></li>
+                                    <li><a href="{{route('backend.aboutus')}}" data-key="t-inbox">Inbox</a></li>
                                     <li><a href="apps-email-read.html" data-key="t-read-email">Read Email</a></li>
                                 </ul>
                             </li>

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Helpers\FileUploadHelper;
-
+use App\Models\AboutUsPage;
 use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
 {
     public function index() {
-        return view('backend.aboutus');
+        $AboutUsPageFromDB = AboutUsPage::first();
+        return view('backend.aboutus', ['singleAboutUsPage' => $AboutUsPageFromDB]);
     }
 
     public function store() {
@@ -17,40 +18,76 @@ class AboutUsController extends Controller
         request()->validate([
             'title1' => ['required'],
             'title2' => ['required'],
-            'text1' => ['required'],
-            'text2' => ['required'],
             'our_vision' => ['required'],
+            'vision' => ['required'],
             'our_messege' => ['required'],
-            'image1' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
+            'messege' => ['required'],
+            'our_goals' => ['required'],
+            'goals' => ['required'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ]);
     
-        // Check and upload both images
-        $uploadedImages = FileUploadHelper::uploadMultipleFiles([
-            'image1' => request()->file('image1'),
-            'image2' => request()->file('image2')
-        ], 'homeabout'); // 'homeabout' is the folder where images will be uploaded
-    
-        // If the images failed to upload, return an error
-        if (!$uploadedImages['image1'] || !$uploadedImages['image2']) {
+        // Process the image upload after validation has passed
+        if (request()->hasFile('image')) {
+            $image = request()->file('image');
+            $folder = 'aboutus'; // Define your folder for uploads
+            $imageName = FileUploadHelper::uploadFile($image, $folder); // Assuming this helper uploads the file and returns its name
+        } else {
             return back()->withErrors(['image' => 'Image upload failed.']);
         }
     
-        // Insert data into the homeabout table including the uploaded image names
-        HomeAbout::create([
+        // Insert data into the table including the uploaded image name
+        AboutUsPage::create([
             'title1' => request()->title1,
             'title2' => request()->title2,
-            'text1' => request()->text1,
-            'text2' => request()->text2,
             'our_vision' => request()->our_vision,
+            'vision' => request()->vision,
             'our_messege' => request()->our_messege,
-            'button_text' => request()->button_text,
-            'button_url' => request()->button_url,
-            'image1' => $uploadedImages['image1'],  // Store the name of the uploaded image1
-            'image2' => $uploadedImages['image2'],  // Store the name of the uploaded image2
-            'video_url' => request()->video_url,
+            'messege' => request()->messege,
+            'our_goals' => request()->our_goals,
+            'goals' => request()->goals,
+            'image' => $imageName
+        ]);
+        return to_route('backend.aboutus')->with('success-create', 'تم اضافة العنصر بنجاح');
+    }
+
+    public function update(AboutUsPage $singleAboutUsPage) {
+        request()->validate([
+            'title1' => ['required'],
+            'title2' => ['required'],
+            'our_vision' => ['required'],
+            'vision' => ['required'],
+            'our_messege' => ['required'],
+            'messege' => ['required'],
+            'our_goals' => ['required'],
+            'goals' => ['required'],
         ]);
     
-        // Redirect to the homeabout list or any other route
-        return to_route('backend.homeabout')->with('success-create', 'تم اضافة العنصر بنجاح');
+        // Check and upload image if present
+        $uploadedImages = FileUploadHelper::uploadMultipleFiles([
+            'image' => request()->file('image')
+        ], 'aboutus');
+    
+        // Delete old image if new one are uploaded
+        if (!empty($uploadedImages['image'])) {
+            if (file_exists(public_path('uploads/aboutus/' . $singleAboutUsPage->image))) {
+                unlink(public_path('/uploads/aboutus/' . $singleAboutUsPage->image));  
+            }
+            $singleAboutUsPage->image = $uploadedImages['image'];
+        }
+    
+        // Update the other fields
+        $singleAboutUsPage->update([
+            'title1' => request()->title1,
+            'title2' => request()->title2,
+            'our_vision' => request()->our_vision,
+            'vision' => request()->vision,
+            'our_messege' => request()->our_messege,
+            'messege' => request()->messege,
+            'our_goals' => request()->our_goals,
+            'goals' => request()->goals
+        ]);
+    
+        return to_route('backend.aboutus')->with('success-update', 'تم تحديث العنصر بنجاح');
     }
 }
