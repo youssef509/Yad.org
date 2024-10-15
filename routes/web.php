@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PartinersController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\AboutQAsController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
@@ -51,7 +52,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::put('/{singleAboutUsPage}',[AboutUsController::class, 'update'])->name('admin.aboutus-update');
     });
     Route::prefix('about-QA')->group(function() {
-        
+        Route::get('/',[AboutQAsController::class, 'index'])->name('backend.aboutqa');
+        Route::post('/',[AboutQAsController::class, 'store'])->name('admin.aboutqa-create');
     });
 });
 
