@@ -20,10 +20,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('backend.index');
     Route::prefix('slider')->group(function() {
         Route::get('/', [SliderController::class, 'index'])->name('backend.slider');
-        Route::post('/', [SliderController::class, 'store'])->name(name: 'admin.slider-store');
-        Route::get('{slider}/edit', [SliderController::class, 'edit'])->name(name: 'admin.edit-slider');
-        Route::put('{slider}/update', [SliderController::class, 'update'])->name(name: 'admin.slider-update');
-        Route::delete('{slider}', [SliderController::class, 'destroy'])->name(name: 'admin.slider-destroy');
+        Route::post('/', [SliderController::class, 'store'])->name('admin.slider-store');
+        Route::get('{slider}/edit', [SliderController::class, 'edit'])->name('admin.edit-slider');
+        Route::put('{slider}/update', [SliderController::class, 'update'])->name('admin.slider-update');
+        Route::delete('{slider}', [SliderController::class, 'destroy'])->name('admin.slider-destroy');
     });
     Route::prefix('homeabout')->group(function() {
         Route::get('/',[HomeAboutController::class, 'index'])->name('backend.homeabout');
@@ -54,6 +54,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('about-QA')->group(function() {
         Route::get('/',[AboutQAsController::class, 'index'])->name('backend.aboutqa');
         Route::post('/',[AboutQAsController::class, 'store'])->name('admin.aboutqa-create');
+        Route::delete('{aboutqaid}', [AboutQAsController::class, 'destroy'])->name('admin.aboutqa-destroy');
+    });
+    Route::prefix('causes')->group(function() {
+        Route::get('/', [SliderController::class, 'index'])->name('backend.slider');
+        
     });
 });
 

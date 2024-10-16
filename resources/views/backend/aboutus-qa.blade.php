@@ -85,7 +85,50 @@
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
-                      
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">قائمة الاسليدر</h4>
+                                        <p class="card-title-desc">تعديل محتويات الاسليدر النصوص,زر,الصورة </p>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="container text-center">
+                                            <div class="row">
+                                                @foreach ($AllQA as $OneQA)
+                                                <div class="col">
+                                                    <!-- Simple card -->
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">{{$OneQA->question}}</h4>
+                                                            <p class="card-text">{{$OneQA->answer}}</p>
+                                                            <form method="POST" action="{{route('admin.aboutqa-destroy', $OneQA->id)}}" class="delete-form" style="display: inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger waves-effect waves-light sa-warning">حذف</button>
+                                                            </form>
+                                                        </div>
+                                                        @if(session('success'))
+                                                            <script>
+                                                                document.addEventListener("DOMContentLoaded", function() {
+                                                                    Swal.fire({
+                                                                        title: "نجاح!",
+                                                                        text: "{{ session('success') }}",
+                                                                        icon: "success",
+                                                                        confirmButtonText: "حسناً"
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div> <!-- container-fluid -->
                     

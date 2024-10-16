@@ -150,8 +150,8 @@
                                     <span data-key="t-email">من نحن</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{route('backend.aboutus')}}" data-key="t-inbox">Inbox</a></li>
-                                    <li><a href="{{route('backend.aboutqa')}}" data-key="t-read-email">Read Email</a></li>
+                                    <li><a href="{{route('backend.aboutus')}}" data-key="t-inbox">قسم من نحن</a></li>
+                                    <li><a href="{{route('backend.aboutqa')}}" data-key="t-read-email">قسم الاسئلة</a></li>
                                 </ul>
                             </li>
 
