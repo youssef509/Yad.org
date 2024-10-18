@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AboutQAsController;
+use App\Http\Controllers\Admin\AdminCausesController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
@@ -57,8 +58,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::delete('{aboutqaid}', [AboutQAsController::class, 'destroy'])->name('admin.aboutqa-destroy');
     });
     Route::prefix('causes')->group(function() {
-        Route::get('/', [SliderController::class, 'index'])->name('backend.slider');
-        
+        Route::get('/', [AdminCausesController::class, 'index'])->name('backend.causes');
+        Route::post('/', [AdminCausesController::class, 'store'])->name('admin.causes-create');
+        Route::get('{causes}/edit', [AdminCausesController::class, 'edit'])->name('admin.cause-edit');
+        Route::put('{causes}/update', [AdminCausesController::class, 'update'])->name('admin.cause-update');
+        Route::delete('{cause}', [AdminCausesController::class, 'destroy'])->name('admin.cause-destroy');
     });
 });
 

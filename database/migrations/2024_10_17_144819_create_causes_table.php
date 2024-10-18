@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slider', function (Blueprint $table) {
+        Schema::create('causes', function (Blueprint $table) {
             $table->id();
-            $table->string('text_1');
-            $table->string('text_2');
-            $table->text('button1_text');    
-            $table->text('button2_text');    
-            $table->string('button1_url');
-            $table->string('button2_url');
+            $table->string('title');
+            $table->string('text1');
+            $table->text('text2');
             $table->string('image');
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slider');
+        Schema::dropIfExists('causes');
     }
 };
