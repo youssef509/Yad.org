@@ -61,7 +61,7 @@ class AdminCausesController extends Controller
             // Handle image upload if a new image is provided
             if (request()->hasFile('image')) {
                 // Delete the old image
-                $oldImagePath = public_path('uploads/slider/' . $cause->image);
+                $oldImagePath = public_path('uploads/causes/' . $cause->image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Deletes the old image file
                 }

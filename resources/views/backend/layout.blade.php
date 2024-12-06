@@ -45,19 +45,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="30">
+                                    <img src="{{ asset('backend-assets/images/logo.png')}}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">PLATINUM</span>
+                                    <img src="{{ asset('backend-assets/images/logo.png')}}" alt="" height="24"> <span class="logo-txt">PLATINUM</span>
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="30">
+                                    <img src="{{ asset('backend-assets/images/logo.png')}}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('backend-assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">PLATINUM</span>
+                                    <img src="{{ asset('backend-assets/images/logo.png')}}" alt="" height="24"> <span class="logo-txt">PLATINUM</span>
                                 </span>
                             </a>
                         </div>
@@ -80,16 +80,12 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="{{ asset('backend-assets/images/users/avatar-1.jpg')}}"
+                                <img class="rounded-circle header-profile-user" src="{{ asset('backend-assets/images/logo.png')}}"
                                     alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium">Paul K.</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium">Admin</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a class="dropdown-item" href="apps-contacts-profile.html"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a>
-                                <a class="dropdown-item" href="auth-lock-screen.html"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock screen</a>
-                                <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
         
@@ -160,12 +156,10 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
                                     <i data-feather="briefcase"></i>
-                                    <span data-key="t-contacts">الحملات</span>
+                                    <span data-key="t-causes">الحملات</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="apps-contacts-grid.html" data-key="t-user-grid">User Grid</a></li>
-                                    <li><a href="apps-contacts-list.html" data-key="t-user-list">User List</a></li>
-                                    <li><a href="apps-contacts-profile.html" data-key="t-profile">Profile</a></li>
+                                    <li><a href="{{route('backend.causes')}}" data-key="t-causes-add">اضافة حملة</a></li>
                                 </ul>
                             </li>
 

@@ -7,6 +7,7 @@ Contact: themesbrand@gmail.com
 File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
 [data-theme-mode=red] {
   --bs-primary: #ff7784 !important;
   --bs-primary-rgb: 255, 119, 132 !important;
@@ -121,7 +122,9 @@ File: Main Css File
   height: 34px;
   padding: 0 10px;
 }
-
+ body{
+  font-family: "Noto Kufi Arabic", serif;
+ }
 body:not([data-sidebar-size=sm]) #vertical-menu-btn {
   margin-left: -52px;
   margin-right: 20px;
@@ -3532,7 +3535,7 @@ a.ck.ck-button:not(.ck-disabled):hover {
 }
 
 .ck.ck-list__item .ck-button .ck-button__label {
-  font-family: "Be Vietnam Pro", sans-serif;
+  font-family: "Noto Kufi Arabic", serif;
 }
 
 .ck.ck-button:not(.ck-disabled):hover, a.ck.ck-button:not(.ck-disabled):hover, .ck.ck-button.ck-on, a.ck.ck-button.ck-on {
