@@ -13,7 +13,14 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AboutQAsController;
+use App\Http\Controllers\admin\AboutSeoController;
 use App\Http\Controllers\Admin\AdminCausesController;
+use App\Http\Controllers\admin\BlogSeoController;
+use App\Http\Controllers\admin\CausesSeoController;
+use App\Http\Controllers\admin\ContactInfoController;
+use App\Http\Controllers\admin\ConversionsAPIsController;
+use App\Http\Controllers\admin\HomeSeoController;
+use App\Http\Controllers\admin\SocialMediaController;
 use Illuminate\Support\Facades\Route;
 
 // Routes For The Back-End (Admin Panel).
@@ -63,6 +70,48 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('{causes}/edit', [AdminCausesController::class, 'edit'])->name('admin.cause-edit');
         Route::put('{causes}/update', [AdminCausesController::class, 'update'])->name('admin.cause-update');
         Route::delete('{cause}', [AdminCausesController::class, 'destroy'])->name('admin.cause-destroy');
+    });
+    // Routes for ConversionsAPIs 
+    Route::prefix('/ConversionsAPIs')->group(function() {
+        Route::get('/', [ConversionsAPIsController::class, 'index'])->name('settings-ConversionsAPIs');
+        Route::post('/', [ConversionsAPIsController::class, 'store'])->name('settings-ConversionsAPIs-store');
+        Route::put('/{Data}/update', [ConversionsAPIsController::class, 'update'])->name('settings-ConversionsAPIs-update');
+    });
+   // Routes For Socail Media Links
+   Route::prefix('/socialmedia-links')->group(function() {
+    Route::get('/', [SocialMediaController::class, 'index'])->name('settings-socialmedia');
+    Route::post('/', [SocialMediaController::class, 'store'])->name('settings-socialmedia-store');
+    Route::put('/{Data}/update', [SocialMediaController::class, 'update'])->name('settings-socialmedia-update');
+    });
+    // Routes For SEO
+    Route::prefix('/seo')->group(function() {
+        Route::prefix('/homepage')->group(function() {
+            Route::get('/', [HomeSeoController::class, 'index'])->name('seo-homepage');
+            Route::post('/', [HomeSeoController::class, 'store'])->name('seo-homepage-store');
+            Route::put('/{Data}/update', [HomeSeoController::class, 'update'])->name('seo-homepage-update');
+        });
+        Route::prefix('/about')->group(function() {
+            Route::get('/', [AboutSeoController::class, 'index'])->name('seo-aboutpage');
+            Route::post('/', [AboutSeoController::class, 'store'])->name('seo-aboutpage-store');
+            Route::put('/{Data}/update', [AboutSeoController::class, 'update'])->name('seo-aboutpage-update');
+        });
+        Route::prefix('/causes')->group(function() {
+            Route::get('/', [CausesSeoController::class, 'index'])->name('seo-causespage');
+            Route::post('/', [CausesSeoController::class, 'store'])->name('seo-causespage-store');
+            Route::put('/{Data}/update', [CausesSeoController::class, 'update'])->name('seo-causespage-update');
+        });
+        Route::prefix('/blog')->group(function() {
+            Route::get('/', [BlogSeoController::class, 'index'])->name('seo-blogpage');
+            Route::post('/', [BlogSeoController::class, 'store'])->name('seo-blogpage-store');
+            Route::put('/{Data}/update', [BlogSeoController::class, 'update'])->name('seo-blogpage-update');
+        });
+    });
+
+     // Routes For Contact Informations
+     Route::prefix('/contact-infos')->group(function() {
+        Route::get('/', [ContactInfoController::class, 'index'])->name('settings-contactinfos');
+        Route::post('/', [ContactInfoController::class, 'store'])->name('settings-contactinfos-store');
+        Route::put('/{Data}/update', [ContactInfoController::class, 'update'])->name('settings-contactinfos-update');
     });
 });
 

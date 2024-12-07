@@ -186,49 +186,32 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
                                     <i data-feather="file-text"></i>
-                                    <span data-key="t-pages">المستخدمين</span>
+                                    <span data-key="t-pages">اعدادات عامة</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="pages-starter.html" data-key="t-starter-page">Starter Page</a></li>
-                                    <li><a href="pages-maintenance.html" data-key="t-maintenance">Maintenance</a></li>
-                                    <li><a href="pages-comingsoon.html" data-key="t-coming-soon">Coming Soon</a></li>
-                                    <li><a href="pages-timeline.html" data-key="t-timeline">Timeline</a></li>
-                                    <li><a href="pages-faqs.html" data-key="t-faqs">FAQs</a></li>
-                                    <li><a href="pages-pricing.html" data-key="t-pricing">Pricing</a></li>
-                                    <li><a href="pages-404.html" data-key="t-error-404">Error 404</a></li>
-                                    <li><a href="pages-500.html" data-key="t-error-500">Error 500</a></li>
+                                    <li><a href="{{route('settings-socialmedia')}}" data-key="t-maintenance">السوشيال ميديا</a></li>
+                                    <li><a href="{{route('settings-ConversionsAPIs')}}" data-key="t-starter-page">Conversions APIs</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
                                     <i data-feather="file-text"></i>
-                                    <span data-key="t-pages">بيانات التواصل</span>
+                                    <span data-key="t-gs">بيانات التواصل</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="pages-starter.html" data-key="t-starter-page">Starter Page</a></li>
-                                    <li><a href="pages-maintenance.html" data-key="t-maintenance">Maintenance</a></li>
-                                    <li><a href="pages-comingsoon.html" data-key="t-coming-soon">Coming Soon</a></li>
-                                    <li><a href="pages-timeline.html" data-key="t-timeline">Timeline</a></li>
-                                    <li><a href="pages-faqs.html" data-key="t-faqs">FAQs</a></li>
-                                    <li><a href="pages-pricing.html" data-key="t-pricing">Pricing</a></li>
-                                    <li><a href="pages-404.html" data-key="t-error-404">Error 404</a></li>
-                                    <li><a href="pages-500.html" data-key="t-error-500">Error 500</a></li>
+                                    <li><a href="{{route('settings-contactinfos')}}" data-key="t-gs-contact">بيانات التواصل</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
                                     <i data-feather="file-text"></i>
-                                    <span data-key="t-pages">محركات البحث (SEO)</span>
+                                    <span data-key="t-seo">محركات البحث (SEO)</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="pages-starter.html" data-key="t-starter-page">Starter Page</a></li>
-                                    <li><a href="pages-maintenance.html" data-key="t-maintenance">Maintenance</a></li>
-                                    <li><a href="pages-comingsoon.html" data-key="t-coming-soon">Coming Soon</a></li>
-                                    <li><a href="pages-timeline.html" data-key="t-timeline">Timeline</a></li>
-                                    <li><a href="pages-faqs.html" data-key="t-faqs">FAQs</a></li>
-                                    <li><a href="pages-pricing.html" data-key="t-pricing">Pricing</a></li>
-                                    <li><a href="pages-404.html" data-key="t-error-404">Error 404</a></li>
-                                    <li><a href="pages-500.html" data-key="t-error-500">Error 500</a></li>
+                                    <li><a href="{{route('seo-homepage')}}" data-key="t-seo-home">الصفحة الرئيسية</a></li>
+                                    <li><a href="{{route('seo-aboutpage')}}" data-key="t-seo-about">من نحن</a></li>
+                                    <li><a href="{{route('seo-causespage')}}" data-key="t-seo-causes">المشاريع</a></li>
+                                    <li><a href="{{route('seo-blogpage')}}" data-key="t-seo-blog">المقالات</a></li>
                                 </ul>
                             </li>
                         </ul>
